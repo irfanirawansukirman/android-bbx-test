@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/app_name" />
+
+    <item
+        android:icon="@drawable/ic_compass_black_24dp"
+        android:title="@string/app_name" />
+
+    <item
+        android:checkable="false"
+        android:checked="false"
+        android:enabled="false"
+        android:icon="@drawable/ic_android_transparent_24dp"
+        android:title="@string/app_name" />
+
+    <item
+        android:icon="@drawable/ic_list_black_24dp"
+        android:title="@string/app_name" />
+    <item
+        android:icon="@drawable/ic_more_black_24dp"
+        android:title="@string/app_name" />
+
+</menu>

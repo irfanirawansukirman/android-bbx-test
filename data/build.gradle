@@ -1,0 +1,25 @@
+apply from: "$rootDir/build-systems/dependencies.gradle"
+
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+    test.java.srcDirs += 'src/test/kotlin'
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation kotlinLibrary.languagePluginX
+
+    implementation squareLibrary.okHttpIntcpt
+    implementation squareLibrary.retrofit
+    implementation squareLibrary.moshiConverter
+    implementation squareLibrary.moshi
+    implementation squareLibrary.moshiKotlin
+    kapt squareLibrary.moshiCodegen
+}

@@ -1,0 +1,6 @@
+include ':usecase'
+include ':domain'
+include ':data'
+include ':extensions'
+include ':app'
+rootProject.name = "Ustman"

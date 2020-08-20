@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/RootDefault"
+    tools:context=".presentation.main.MainActivity">
+
+    <!--    <androidx.appcompat.widget.Toolbar-->
+    <!--        style="@style/ThemeOverlay.AppCompat.Light"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@color/white"-->
+    <!--        android:elevation="6dp"-->
+    <!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppbarMain"
+        style="@style/AppbarDefault.WithHideOnScroll">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:backgroundTint="@android:color/transparent"
+                app:elevation="0dp"
+                app:itemIconTint="@drawable/btm_navigation_selector"
+                app:itemRippleColor="@color/gray"
+                app:labelVisibilityMode="unlabeled"
+                app:menu="@menu/main" />
+        </FrameLayout>
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        style="@style/FabDefault"
+        app:layout_anchor="@+id/bottomAppbarMain"
+        app:srcCompat="@drawable/ic_quran_black_24dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
