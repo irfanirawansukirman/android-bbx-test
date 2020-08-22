@@ -1,7 +1,9 @@
 package com.irfanirawansukirman.ustman.presentation.main
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.irfanirawansukirman.extensions.navigation
 import com.irfanirawansukirman.ustman.R
 import com.irfanirawansukirman.ustman.presentation.main.qibla.QiblaFragment
 import net.time4j.SystemClock

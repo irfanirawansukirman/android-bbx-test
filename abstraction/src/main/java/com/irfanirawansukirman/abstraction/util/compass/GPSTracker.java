@@ -1,4 +1,4 @@
-package com.irfanirawansukirman.ustman.domain.abstraction.util.compass;
+package com.irfanirawansukirman.abstraction.util.compass;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -14,7 +14,7 @@ import android.os.IBinder;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.irfanirawansukirman.ustman.R;
+import com.irfanirawansukirman.abstraction.R;
 
 public class GPSTracker extends Service implements LocationListener {
     private final Context mContext;
@@ -145,11 +145,9 @@ public class GPSTracker extends Service implements LocationListener {
         // Setting Dialog Message
         alertDialog.setMessage(mContext.getResources().getString(R.string.gps_settings_text));
         // On pressing Settings button
-        alertDialog.setPositiveButton(mContext.getResources().getString(R.string.settings_button_ok), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                mContext.startActivity(intent);
-            }
+        alertDialog.setPositiveButton(mContext.getResources().getString(R.string.settings_button_ok), (dialog, which) -> {
+            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            mContext.startActivity(intent);
         });
         // on pressing cancel button
         alertDialog.setNegativeButton(mContext.getResources().getString(R.string.settings_button_cancel), new DialogInterface.OnClickListener() {

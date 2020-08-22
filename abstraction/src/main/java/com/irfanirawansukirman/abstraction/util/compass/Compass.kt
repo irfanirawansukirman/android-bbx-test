@@ -1,4 +1,4 @@
-package com.irfanirawansukirman.ustman.domain.abstraction.util.compass
+package com.irfanirawansukirman.abstraction.util.compass
 
 import android.content.Context
 import android.hardware.Sensor

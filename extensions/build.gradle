@@ -42,6 +42,10 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -49,7 +53,7 @@ dependencies {
     implementation kotlinLibrary.languagePluginX
     implementation kotlinLibrary.extCoreX
 
-    implementation androidSupportLibrary.appCompatX
+    api androidSupportLibrary.appCompatX
     implementation androidSupportLibrary.recyclerX
 
     implementation androidSupportLibrary.designX
@@ -67,6 +71,8 @@ dependencies {
 
     implementation imageLoader.glide
     kapt imageLoader.glidCompiler
+
+    implementation utils.dexterPermission
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
