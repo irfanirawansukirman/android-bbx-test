@@ -1,3 +1,5 @@
+include ':featurequran'
+include ':featurehome'
 include ':abstraction'
 include ':usecase'
 include ':domain'
