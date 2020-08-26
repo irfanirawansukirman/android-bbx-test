@@ -2,14 +2,17 @@ package com.irfanirawansukirman.extensions
 
 import android.app.*
 import android.content.Context
+import android.content.Context.LOCATION_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.location.LocationManager
 import android.media.RingtoneManager
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Build
+import android.provider.Settings
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
@@ -72,6 +75,10 @@ inline fun <reified T : AppCompatActivity> AppCompatActivity.navigation(
     if (requestCode != 0) startActivityForResult(intent, requestCode) else startActivity(intent)
     if (withFinish) finish()
     overridePendingTransitionEnter()
+}
+
+fun AppCompatActivity.navigateToSetting(settingsId: String) {
+    startActivity(Intent(settingsId))
 }
 
 fun AppCompatActivity.finishResult(resultCode: Int = 1234) {
@@ -284,4 +291,13 @@ fun AppCompatActivity.hasLocationPermission(): Boolean {
         this,
         Permission.FINE_LOCATION
     ) == PackageManager.PERMISSION_GRANTED
+}
+
+private var locationManager: LocationManager? = null
+fun AppCompatActivity.hasGpsEnabled(): Boolean {
+    if (locationManager == null) {
+        getSystemService(LOCATION_SERVICE) as LocationManager
+    }
+
+    return locationManager?.isProviderEnabled(LocationManager.GPS_PROVIDER) ?: false
 }

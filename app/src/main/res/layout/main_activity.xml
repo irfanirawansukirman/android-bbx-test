@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/RootDefault"
-    tools:context=".presentation.main.MainActivity">
+    tools:context=".presentation.main.main.MainActivity">
 
     <!--    <androidx.appcompat.widget.Toolbar-->
     <!--        style="@style/ThemeOverlay.AppCompat.Light"-->
@@ -42,6 +42,7 @@
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabMainQuran"
         style="@style/FabDefault"
         app:layout_anchor="@+id/bottomAppbarMain"
         app:srcCompat="@drawable/ic_quran_black_24dp" />

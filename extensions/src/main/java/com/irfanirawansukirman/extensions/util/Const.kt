@@ -1,6 +1,7 @@
 package com.irfanirawansukirman.extensions.util
 
 import android.Manifest
+import android.provider.Settings
 
 object Const {
     object Code {
@@ -15,11 +16,7 @@ object Const {
     }
 
     object Navigation {
-        const val BASE = "myapp://"
-        const val TO_MOVIE = "${BASE}movie"
-        const val MOVIE_TITLE = "MOVIE_TITLE"
-
-        const val TO_CHAT = "${BASE}chat"
+        const val LOCATION_SETTINGS = Settings.ACTION_LOCATION_SOURCE_SETTINGS
     }
 
     object DateTime {

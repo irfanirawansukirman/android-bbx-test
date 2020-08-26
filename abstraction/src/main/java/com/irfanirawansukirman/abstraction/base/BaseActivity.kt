@@ -62,6 +62,13 @@ abstract class BaseActivity<VB : ViewBinding>(private val viewBinder: (LayoutInf
      */
     abstract fun bindToolbar(): Toolbar?
 
+    abstract fun onDestroyActivities()
+
+    override fun onDestroy() {
+        super.onDestroy()
+        onDestroyActivities()
+    }
+
     override fun onStart() {
         super.onStart()
         continuousCall()

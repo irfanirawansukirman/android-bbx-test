@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.irfanirawansukirman.extensions.viewBinding
@@ -29,6 +30,11 @@ abstract class BaseFragment<VB : ViewBinding>(
         continuousCall()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        onDestroyActivities()
+    }
+
     /**
      * Function for load livedata observer from viewmodel
      */
@@ -48,4 +54,8 @@ abstract class BaseFragment<VB : ViewBinding>(
      * Function for setup view listener
      */
     abstract fun setupViewListener()
+
+    abstract fun onDestroyActivities()
+
+    fun getMyParentFragment() = parentFragment
 }
