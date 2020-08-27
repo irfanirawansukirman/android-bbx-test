@@ -13,8 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.main.quran.QuranActivity"></activity>
-        <activity android:name=".presentation.main.main.MainActivity">
+        <activity android:name=".presentation.main.quran.QuranActivity" />
+        <activity android:name=".presentation.main.main.MainActivity" />
+        <activity android:name="com.irfanirawansukirman.featuresplashscreen.SplashscreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

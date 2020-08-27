@@ -16,9 +16,9 @@ ext {
     ]
 
     appConfig = [
-            appId       : "com.irfanirawansukirman.pipileman",
-            nameTitle   : "Pipileman",
-            nameTitleDev: "Pipileman - Dev",
+            appId       : "com.irfanirawansukirman.ustman",
+            nameTitle   : "Ustman",
+            nameTitleDev: "Ustman - Dev",
             nameVersion : "1.0.0",
             buildNumber : 1,
             sdkMin      : 21,
@@ -30,7 +30,7 @@ ext {
 
     activityXExtLibraryV = '1.1.0'
     supportXLibraryV = '1.2.0'
-    constraintXLibV = '1.1.3'
+    constraintXLibV = '2.0.1'
     supportDesignXLibV = '1.1.0'
     cardXLibV = '1.1.0'
     recyclerXLibV = '1.1.0'

@@ -1,3 +1,4 @@
+include ':featuresplashscreen'
 include ':featurequran'
 include ':featurehome'
 include ':abstraction'

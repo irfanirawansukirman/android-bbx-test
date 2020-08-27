@@ -61,6 +61,22 @@ fun AppCompatActivity.showSnackBar(
     }.show()
 }
 
+fun AppCompatActivity.navigationModule(
+    targetClass: String,
+    withFinish: Boolean = false,
+    requestCode: Int = 0,
+    intentParams: Intent.() -> Unit
+) {
+    val moduleSeparator = "."
+    val baseModule = "com.irfanirawansukirman$moduleSeparator"
+    val intent = Intent()
+    intent.intentParams()
+    intent.setClassName(this, baseModule + targetClass)
+    if (requestCode != 0) startActivityForResult(intent, requestCode) else startActivity(intent)
+    if (withFinish) finish()
+    overridePendingTransitionEnter()
+}
+
 inline fun <reified T : AppCompatActivity> AppCompatActivity.navigation() {
     navigation<T> {}
 }

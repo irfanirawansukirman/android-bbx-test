@@ -48,6 +48,7 @@ dependencies {
 
     api group: 'net.time4j', name: 'time4j-android', version: '4.6-2020a'
 
+    implementation androidSupportLibrary.designX
     api androidSupportLibrary.fragmentExt
     api androidSupportLibrary.activityExt
 }

@@ -5,7 +5,7 @@ import android.provider.Settings
 
 object Const {
     object Code {
-        const val REQUEST_CODE = 1234
+        const val REQUEST_CODE = 1001
     }
 
     object View {
@@ -16,11 +16,19 @@ object Const {
     }
 
     object Navigation {
+        const val MainActivity = "ustman.presentation.main.main.MainActivity"
+
         const val LOCATION_SETTINGS = Settings.ACTION_LOCATION_SOURCE_SETTINGS
     }
 
     object DateTime {
-        const val DATE_TIME_DEFAULT = "yyyy-MM-dd HH:mm:ss" // HH (24) hh (12)
+        const val DATE_TIME_24H_DEFAULT = "yyyy-MM-dd HH:mm:ss" // HH (24) hh (12)
+        const val TIME_24H_DEFAULT = "HH:mm"
+        const val TIME_24H_WITH_SECOND = "HH:mm:ss"
+
+        const val DATE_TIME_12H_DEFAULT = "yyyy-MM-dd hh:mm:ss" // HH (24) hh (12)
+        const val TIME_12H_DEFAULT = "hh:mm"
+        const val TIME_12H_WITH_SECOND = "hh:mm:ss"
     }
 
     object KeyParam {
