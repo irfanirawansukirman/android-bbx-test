@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.irfanirawansukirman.extensions.navigationModule
 import com.irfanirawansukirman.extensions.util.Const.Navigation
+import com.irfanirawansukirman.libraryanalytic.Sentry
 
 class SplashscreenActivity : AppCompatActivity() {
 
@@ -16,6 +17,7 @@ class SplashscreenActivity : AppCompatActivity() {
         setContentView(R.layout.splashscreen_activity)
 
         Handler().postDelayed({
+            Sentry.createBreadcrumb(SplashscreenActivity::class.java.simpleName + " is navigate")
             navigationModule(targetClass = Navigation.MainActivity, withFinish = true) {}
         }, 3_000)
     }

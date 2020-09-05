@@ -11,7 +11,7 @@ import com.irfanirawansukirman.extensions.overridePendingTransitionExit
 abstract class BaseActivity<VB : ViewBinding>(private val viewBinder: (LayoutInflater) -> ViewBinding) :
     AppCompatActivity() {
 
-    val mViewBinding by lazy { viewBinder.invoke(layoutInflater) as VB }
+    val mViewBinding by lazy(LazyThreadSafetyMode.NONE) { viewBinder.invoke(layoutInflater) as VB }
 
     private var mToolbar: Toolbar? = null
 

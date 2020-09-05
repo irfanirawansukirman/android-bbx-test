@@ -23,7 +23,7 @@ ext {
             buildNumber : 1,
             sdkMin      : 21,
             sdkTarget   : 29,
-            buildToolsV : "29.0.3",
+            buildTools  : "29.0.3",
             flavorMode  : "mode",
             idSuffixDev : ".dev"
     ]
@@ -50,7 +50,6 @@ ext {
             swipeX          : "androidx.swiperefreshlayout:swiperefreshlayout:${swipeRefreshLibV}",
             cardX           : "androidx.cardview:cardview:${cardXLibV}",
             constraintX     : "androidx.constraintlayout:constraintlayout:${constraintXLibV}",
-            coordinatorX    : "com.android.support:coordinatorlayout:${coordinatorXLibV}",
             legacySupportV4X: "androidx.legacy:legacy-support-v4:${legacySupportV4LibV}",
 
             roomRuntime     : "androidx.room:room-runtime:${roomLibV}",
@@ -240,6 +239,7 @@ ext {
     deeplinkDispatchV = '4.1.0'
     dexterV = '6.0.2'
     multidexV = '1.0.3'
+    sentryIoV = '2.1.3'
     //==================================
     utils = [
             // navigation
@@ -250,7 +250,10 @@ ext {
             dexterPermission : "com.karumi:dexter:${dexterV}",
 
             // multidex
-            supportMultidex  : "com.android.support:multidex:${multidexV}"
+            supportMultidex  : "com.android.support:multidex:${multidexV}",
+
+            // analytic
+            sentryIo         : "io.sentry:sentry-android:${sentryIoV}"
     ]
     //==================================
 

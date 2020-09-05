@@ -1,0 +1,9 @@
+apply from: "$rootDir/build-systems/feature-app.gradle"
+apply plugin: 'kotlin-android'
+
+dependencies {
+    implementation project(':featurehome')
+    implementation project(':featurequran')
+    implementation project(':featuresplashscreen')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+}
