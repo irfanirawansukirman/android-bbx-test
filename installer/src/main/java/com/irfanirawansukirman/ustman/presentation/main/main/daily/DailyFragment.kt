@@ -3,9 +3,9 @@ package com.irfanirawansukirman.ustman.presentation.main.main.daily
 import android.os.Bundle
 import com.google.android.material.appbar.AppBarLayout
 import com.irfanirawansukirman.abstraction.base.BaseFragment
-import com.irfanirawansukirman.abstraction.util.components.AppBarStateChangeListener
 import com.irfanirawansukirman.extensions.putArgs
 import com.irfanirawansukirman.extensions.widget.setLinearList
+import com.irfanirawansukirman.librarycomponent.AppBarStateChangeListener
 import com.irfanirawansukirman.ustman.databinding.DailyFragmentBinding
 
 class DailyFragment : BaseFragment<DailyFragmentBinding>(DailyFragmentBinding::inflate) {

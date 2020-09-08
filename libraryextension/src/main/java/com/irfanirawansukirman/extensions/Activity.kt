@@ -12,6 +12,7 @@ import android.media.RingtoneManager
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Build
+import android.os.Handler
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
@@ -32,6 +33,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.karumi.dexter.listener.single.PermissionListener
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.coroutines.*
 
 // source: https://medium.com/@Zhuinden/simple-one-liner-viewbinding-in-fragments-and-activities-with-kotlin-961430c6c07c
 @Suppress("UNCHECKED_CAST")
@@ -58,6 +60,14 @@ fun AppCompatActivity.showSnackBar(
     Snackbar.make(v, message, Snackbar.LENGTH_SHORT).setAction(actionTitle) {
         action()
     }.show()
+}
+
+fun AppCompatActivity.navigationModule(
+    baseModule: String = "com.irfanirawansukirman",
+    targetClass: String,
+    withFinish: Boolean = false
+) {
+    navigationModule(baseModule = baseModule, targetClass = targetClass, withFinish = withFinish) {}
 }
 
 // source: https://proandroiddev.com/easy-navigation-in-a-multi-module-android-project-2374ecbaa0ae
@@ -217,7 +227,7 @@ inline fun <reified T> AppCompatActivity.logD(obj: T) {
     moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
-    val adapter = moshi?.adapter<T>(T::class.java)
+    val adapter = moshi?.adapter(T::class.java)
     val json = adapter?.toJson(obj) ?: "Error"
     logD(json)
 }
@@ -230,7 +240,7 @@ inline fun <reified T> AppCompatActivity.logE(obj: T) {
     moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
-    val adapter = moshi?.adapter<T>(T::class.java)
+    val adapter = moshi?.adapter(T::class.java)
     val json = adapter?.toJson(obj) ?: "Error"
     logE(json)
 }
@@ -316,4 +326,23 @@ fun AppCompatActivity.hasGpsEnabled(): Boolean {
     }
 
     return locationManager?.isProviderEnabled(LocationManager.GPS_PROVIDER) ?: false
+}
+
+fun AppCompatActivity.runHandler(time: Long = 3_000, executeTasks: () -> Unit) {
+    Handler().postDelayed({
+        executeTasks()
+    }, time)
+}
+
+fun AppCompatActivity.runCoroutine(
+    delayTime: Long = 0L,
+    dispatcher: CoroutineDispatcher = Dispatchers.Main,
+    executeTasks: () -> Unit
+) {
+    GlobalScope.launch(dispatcher) {
+        if (delayTime != 0L) {
+            delay(delayTime)
+        }
+        executeTasks()
+    }
 }

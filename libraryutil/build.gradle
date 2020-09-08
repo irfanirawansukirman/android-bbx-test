@@ -2,7 +2,6 @@ apply from: "$rootDir/build-systems/dependencies.gradle"
 
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
-apply plugin: 'kotlin-kapt'
 
 sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
@@ -13,5 +12,5 @@ sourceCompatibility = "8"
 targetCompatibility = "8"
 
 dependencies {
-    implementation project(':librarynetwork')
+    implementation kotlinLibrary.coroutinesCoreX
 }

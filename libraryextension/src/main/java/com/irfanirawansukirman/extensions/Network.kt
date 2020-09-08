@@ -1,32 +1,63 @@
 package com.irfanirawansukirman.extensions
 
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
-import java.util.concurrent.TimeUnit
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
+import androidx.annotation.RequiresApi
+import java.io.IOException
+import java.net.InetSocketAddress
+import java.net.Socket
 
-fun createOkHttpClient(vararg interceptors: Interceptor): OkHttpClient {
-    return OkHttpClient.Builder()
-        .retryOnConnectionFailure(true)
-        .pingInterval(30, TimeUnit.SECONDS)
-        .readTimeout(1, TimeUnit.MINUTES)
-        .connectTimeout(1, TimeUnit.MINUTES)
-        .apply {
-            if (BuildConfig.DEBUG) {
-                for (intercept in interceptors) {
-                    addInterceptor(intercept)
-                }
-            }
-        }
-        .build()
+private fun preAndroidMInternetCheck(
+    connectivityManager: ConnectivityManager
+): Boolean {
+    val activeNetwork = connectivityManager.activeNetworkInfo
+    if (activeNetwork != null) {
+        return (activeNetwork.type == ConnectivityManager.TYPE_WIFI ||
+                activeNetwork.type == ConnectivityManager.TYPE_MOBILE)
+    }
+    return false
 }
 
-inline fun <reified T> createApiService(okHttpClient: OkHttpClient, url: String): T {
-    val retrofit = Retrofit.Builder()
-        .baseUrl(url)
-        .client(okHttpClient)
-        .addConverterFactory(MoshiConverterFactory.create())
-        .build()
-    return retrofit.create(T::class.java)
+@RequiresApi(Build.VERSION_CODES.M)
+private fun postAndroidMInternetCheck(
+    connectivityManager: ConnectivityManager
+): Boolean {
+    val network = connectivityManager.activeNetwork
+    val connection =
+        connectivityManager.getNetworkCapabilities(network)
+
+    return connection != null && (
+            connection.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                    connection.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
+}
+
+fun isNetworkAvailable(context: Context): Boolean {
+    val connectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as
+                ConnectivityManager
+
+    return if (Build.VERSION.SDK_INT >=
+        Build.VERSION_CODES.M
+    ) {
+        postAndroidMInternetCheck(connectivityManager)
+    } else {
+        preAndroidMInternetCheck(connectivityManager)
+    }
+}
+
+fun isInternetAvailable(): Boolean {
+    return try {
+        val timeoutMs = 1500
+        val sock = Socket()
+        val sockaddr = InetSocketAddress("8.8.8.8", 53)
+
+        sock.connect(sockaddr, timeoutMs)
+        sock.close()
+
+        true
+    } catch (e: IOException) {
+        false
+    }
 }

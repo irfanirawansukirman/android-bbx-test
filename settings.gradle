@@ -1,3 +1,5 @@
+include ':libraryutil'
+include ':librarynotification'
 include ':librarytracking'
 include ':librarycache'
 include ':librarynetwork'

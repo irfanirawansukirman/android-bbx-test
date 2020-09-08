@@ -1,12 +1,13 @@
 package com.irfanirawansukirman.ustman.presentation.main.main
 
+import android.app.Application
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import com.irfanirawansukirman.abstraction.UIState
 import com.irfanirawansukirman.abstraction.base.BaseViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.irfanirawansukirman.libraryutil.CoroutineContextProvider
+import kotlinx.coroutines.withContext
 
 interface MainVMContract {
     interface View {
@@ -14,7 +15,13 @@ interface MainVMContract {
     }
 }
 
-class MainVM : BaseViewModel(), MainVMContract.View {
+class MainVM(
+    context: Context,
+    private val coroutineContextProvider: CoroutineContextProvider
+) : BaseViewModel(
+    context as Application,
+    coroutineContextProvider
+), MainVMContract.View {
 
     private val _title = MutableLiveData<String>()
     val title: LiveData<String>
@@ -24,10 +31,23 @@ class MainVM : BaseViewModel(), MainVMContract.View {
     val bearing: LiveData<Boolean>
         get() = _bearing
 
+    private val _test = MutableLiveData<String>()
+    val test: LiveData<String>
+        get() = _test
+
+    private val _state = MutableLiveData<UIState<String?>>()
+    val state: LiveData<UIState<String?>>
+        get() = _state
+
     override fun getBearing() {
-        viewModelScope.launch(Dispatchers.Main) {
-            delay(1_000)
-            _bearing.value = true
+        executeJob {
+            // requesting from network or cache
+            val result = ""
+
+            // switching process from io to main thread
+            withContext(coroutineContextProvider.main) {
+
+            }
         }
     }
 }

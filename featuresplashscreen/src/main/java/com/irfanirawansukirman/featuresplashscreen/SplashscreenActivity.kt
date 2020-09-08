@@ -1,24 +1,42 @@
 package com.irfanirawansukirman.featuresplashscreen
 
 import android.os.Bundle
-import android.os.Handler
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import com.irfanirawansukirman.abstraction.base.BaseActivity
 import com.irfanirawansukirman.extensions.navigationModule
+import com.irfanirawansukirman.extensions.runCoroutine
 import com.irfanirawansukirman.extensions.util.Const.Navigation
+import com.irfanirawansukirman.featuresplashscreen.databinding.SplashscreenActivityBinding
 import com.irfanirawansukirman.libraryanalytic.Sentry
 
-class SplashscreenActivity : AppCompatActivity() {
+class SplashscreenActivity :
+    BaseActivity<SplashscreenActivityBinding>(SplashscreenActivityBinding::inflate) {
 
     private val viewModel by viewModels<SplashscreenVM>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.splashscreen_activity)
+    override fun loadObservers() {
 
-        Handler().postDelayed({
-            Sentry.createBreadcrumb(SplashscreenActivity::class.java.simpleName + " is navigate")
-            navigationModule(targetClass = Navigation.MainActivity, withFinish = true) {}
-        }, 3_000)
     }
+
+    override fun onFirstLaunch(savedInstanceState: Bundle?) {
+        runCoroutine(3_000) {
+            Sentry.createBreadcrumb(SplashscreenActivity::class.java.simpleName + " is navigate")
+            navigationModule(targetClass = Navigation.MainActivity, withFinish = true)
+        }
+    }
+
+    override fun continuousCall() {
+
+    }
+
+    override fun setupViewListener() {
+
+    }
+
+    override fun enableBackButton(): Boolean = false
+
+    override fun bindToolbar(): Toolbar? = null
+
+    override fun onDestroyActivities() {}
 }
