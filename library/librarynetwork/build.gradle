@@ -1,0 +1,45 @@
+apply from: "$rootDir/build-systems/feature-lib.gradle"
+
+android {
+    buildFeatures {
+        viewBinding = false
+    }
+
+    flavorDimensions "default"
+    productFlavors {
+        development {
+            dimension = "default"
+            buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
+        }
+        staging {
+            dimension = "default"
+            buildConfigField "String", "BASE_URL", '"https://google.com"'
+        }
+        production {
+            dimension = "default"
+            buildConfigField "String", "BASE_URL", '"https://facebook.com"'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation kotlinLibrary.languagePluginX
+
+    api 'com.squareup.retrofit2:converter-gson:2.9.0'
+    api "com.squareup.moshi:moshi:1.9.3"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.9.3"
+    api "com.squareup.retrofit2:converter-moshi:2.9.0"
+
+    api squareLibrary.okHttpIntcpt
+    api squareLibrary.retrofit
+    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.7.0"
+
+    implementation 'com.google.dagger:hilt-android:2.28.3-alpha'
+    kapt 'com.google.dagger:hilt-android-compiler:2.28.3-alpha'
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
+
+    debugImplementation debugging.chuckDebug
+    releaseImplementation debugging.chuckRelease
+}

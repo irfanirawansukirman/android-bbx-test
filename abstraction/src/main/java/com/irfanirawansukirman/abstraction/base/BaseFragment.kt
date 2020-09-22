@@ -13,7 +13,6 @@ abstract class BaseFragment<VB : ViewBinding>(
     private val viewBinder: (LayoutInflater) -> ViewBinding
 ) : Fragment() {
 
-    // val mViewBinding by lazy(LazyThreadSafetyMode.NONE) { viewBinding { viewBinder.invoke(layoutInflater).root as VB } as VB }
     val mViewBinding by lazy(LazyThreadSafetyMode.NONE) { viewBinder.invoke(layoutInflater) as VB }
 
     override fun onCreate(savedInstanceState: Bundle?) {

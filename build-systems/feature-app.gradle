@@ -3,6 +3,9 @@ apply from: "$rootDir/build-systems/dependencies.gradle"
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlinx-serialization'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion appConfig.sdkTarget
@@ -21,6 +24,12 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -41,8 +50,26 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    flavorDimensions "default"
+    productFlavors {
+        development {
+            dimension = "default"
+        }
+        staging {
+            dimension = "default"
+        }
+        production {
+            dimension = "default"
+        }
+    }
 }
 
 dependencies {
     implementation project(':abstraction')
+
+    implementation 'com.google.dagger:hilt-android:2.28.3-alpha'
+    kapt 'com.google.dagger:hilt-android-compiler:2.28.3-alpha'
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
 }

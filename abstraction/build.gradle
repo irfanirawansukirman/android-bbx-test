@@ -1,58 +1,35 @@
-apply from: "$rootDir/build-systems/dependencies.gradle"
-
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply from: "$rootDir/build-systems/feature-lib.gradle"
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
-
-    defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    flavorDimensions "default"
+    productFlavors {
+        development {
+            dimension = "default"
         }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
-    lintOptions {
-        abortOnError false
-    }
-
-    buildFeatures {
-        viewBinding = true
+        staging {
+            dimension = "default"
+        }
+        production {
+            dimension = "default"
+        }
     }
 }
 
 dependencies {
-    api project(':libraryextension')
-    api project(':libraryanalytic')
-    api project(':librarycomponent')
-    api project(':libraryutil')
-    api project(':librarynetwork')
+    api project(':library:libraryextension')
+    api project(':library:libraryanalytic')
+    api project(':library:librarycomponent')
+    api project(':library:libraryutil')
+    api project(':library:librarynetwork')
 
     api group: 'net.time4j', name: 'time4j-android', version: '4.6-2020a'
 
     api androidSupportLibrary.constraintX
     api androidSupportLibrary.fragmentExt
     api androidSupportLibrary.activityExt
+
+    implementation 'com.google.dagger:hilt-android:2.28.3-alpha'
+    kapt 'com.google.dagger:hilt-android-compiler:2.28.3-alpha'
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
 }

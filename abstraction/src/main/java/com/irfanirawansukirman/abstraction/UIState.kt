@@ -7,7 +7,7 @@ data class UIState<T>(val status: Status, val data: T?, val error: String) {
     }
 
     companion object {
-        fun <T> success(data: T): UIState<T> {
+        fun <T> success(data: T?): UIState<T> {
             return UIState(Status.SUCCESS, data, "")
         }
 
