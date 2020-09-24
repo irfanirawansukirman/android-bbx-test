@@ -1,8 +1,49 @@
-apply from: "$rootDir/build-systems/feature-lib.gradle"
+apply from: "$rootDir/build-systems/dependencies.gradle"
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
-    buildFeatures {
-        viewBinding = false
+    compileSdkVersion appConfig.sdkTarget
+    buildToolsVersion appConfig.buildTools
+
+    defaultConfig {
+        minSdkVersion appConfig.sdkMin
+        targetSdkVersion appConfig.sdkTarget
+        versionCode appConfig.buildNumber
+        versionName appConfig.nameVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    lintOptions {
+        abortOnError false
     }
 
     flavorDimensions "default"
@@ -10,14 +51,17 @@ android {
         development {
             dimension = "default"
             buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
+            buildConfigField "String", "TMDB_API_KEY", '"1b2f29d43bf2e4f3142530bc6929d341"'
         }
         staging {
             dimension = "default"
             buildConfigField "String", "BASE_URL", '"https://google.com"'
+            buildConfigField "String", "TMDB_API_KEY", '"1b2f29d43bf2e4f3142530bc6929d341"'
         }
         production {
             dimension = "default"
             buildConfigField "String", "BASE_URL", '"https://facebook.com"'
+            buildConfigField "String", "TMDB_API_KEY", '"1b2f29d43bf2e4f3142530bc6929d341"'
         }
     }
 }

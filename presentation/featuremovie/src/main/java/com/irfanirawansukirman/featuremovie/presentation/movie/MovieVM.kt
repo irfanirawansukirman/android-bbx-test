@@ -15,14 +15,16 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.withContext
 
 interface MovieContract {
-    fun getMovies()
+    interface MovieActivity {
+        fun getMovies()
+    }
 }
 
 class MovieVM @ViewModelInject constructor(
     @ApplicationContext context: Context,
     private val coroutineContextProvider: CoroutineContextProvider,
     private val movieRepositoryImpl: MovieUseCaseImpl
-) : BaseViewModel(context as Application, coroutineContextProvider), MovieContract {
+) : BaseViewModel(context as Application, coroutineContextProvider), MovieContract.MovieActivity {
 
     private val _movies = MutableLiveData<UIState<List<Result>>>()
     val movies: LiveData<UIState<List<Result>>>

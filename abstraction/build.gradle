@@ -1,6 +1,10 @@
-apply from: "$rootDir/build-systems/feature-lib.gradle"
+apply from: "$rootDir/build-systems/dependencies-config-default.gradle"
 
 android {
+    buildFeatures {
+        viewBinding = true
+    }
+
     flavorDimensions "default"
     productFlavors {
         development {

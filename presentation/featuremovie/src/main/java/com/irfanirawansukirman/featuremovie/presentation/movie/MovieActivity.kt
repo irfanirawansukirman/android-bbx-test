@@ -2,38 +2,44 @@ package com.irfanirawansukirman.featuremovie.presentation.movie
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.irfanirawansukirman.abstraction.UIState
 import com.irfanirawansukirman.abstraction.UIState.Status.*
-import com.irfanirawansukirman.extensions.*
+import com.irfanirawansukirman.abstraction.base.BaseActivity
+import com.irfanirawansukirman.extensions.decodeToObj
+import com.irfanirawansukirman.extensions.encodeToString
+import com.irfanirawansukirman.extensions.logD
+import com.irfanirawansukirman.extensions.subscribe
 import com.irfanirawansukirman.extensions.widget.isNotNull
-import com.irfanirawansukirman.extensions.widget.orDefault
-import com.irfanirawansukirman.featuremovie.R
 import com.irfanirawansukirman.featuremovie.data.model.Result
+import com.irfanirawansukirman.featuremovie.databinding.MovieActivityBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MovieActivity : AppCompatActivity() {
+class MovieActivity : BaseActivity<MovieActivityBinding>(MovieActivityBinding::inflate),
+    MovieContract.MovieActivity {
 
     private val viewModel by viewModels<MovieVM>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.movie_activity)
+    override fun loadObservers() {
+        viewModel.movies.subscribe(this@MovieActivity, ::showMovies)
+    }
 
-        viewModel.apply {
-            movies.subscribe(this@MovieActivity, ::showMovies)
-            test.subscribe(this@MovieActivity, ::showToast)
-            ioException.subscribe(this@MovieActivity) {
-                showToast(it.error + " A")
-            }
-            errorException.subscribe(this@MovieActivity) {
-                showToast(it.error + " B")
-            }
-            timeoutException.subscribe(this@MovieActivity) {
-                showToast(it.error + " C")
-            }
-        }
+    override fun onFirstLaunch(savedInstanceState: Bundle?) {
+        getMovies()
+    }
+
+    override fun continuousCall() {}
+
+    override fun setupViewListener() {}
+
+    override fun enableBackButton(): Boolean = false
+
+    override fun bindToolbar(): Toolbar? = null
+
+    override fun onDestroyActivities() {}
+
+    override fun getMovies() {
         viewModel.getMovies()
     }
 

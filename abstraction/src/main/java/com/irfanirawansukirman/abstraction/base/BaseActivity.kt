@@ -3,6 +3,7 @@ package com.irfanirawansukirman.abstraction.base
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.viewbinding.ViewBinding
