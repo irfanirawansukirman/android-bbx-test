@@ -14,7 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.irfanirawansukirman.featuremovie.presentation.movie.MovieActivity">
+        <activity
+            android:name="com.irfanirawansukirman.featuredashboard.presentation.dashboard.DashboardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.irfanirawansukirman.featureauth.login.LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

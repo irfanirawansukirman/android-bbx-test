@@ -1,5 +1,8 @@
 apply from: "$rootDir/build-systems/feature-app.gradle"
 
 dependencies {
+    implementation project(':presentation:featuresplashscreen')
+    implementation project(':presentation:featureauth')
+    implementation project(':presentation:featuredashboard')
     implementation project(':presentation:featuremovie')
 }

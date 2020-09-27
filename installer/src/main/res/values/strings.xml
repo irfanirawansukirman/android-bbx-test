@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">Ustman</string>
-
     <string name="action_settings">Settings</string>
     <string name="compass_dial" translatable="false">Compass Dial</string>
     <string name="compass_hands" translatable="false">Compass Hands</string>

@@ -16,9 +16,9 @@ ext {
     ]
 
     appConfig = [
-            appId       : "com.irfanirawansukirman.ustman",
-            nameTitle   : "Ustman",
-            nameTitleDev: "Ustman - Dev",
+            appId       : "com.irfanirawansukirman.bobobox",
+            nameTitle   : "Bobobox",
+            nameTitleDev: "Bobobox - Dev",
             nameVersion : "1.0.0",
             buildNumber : 1,
             sdkMin      : 21,

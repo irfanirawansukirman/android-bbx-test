@@ -64,15 +64,22 @@ fun AppCompatActivity.showSnackBar(
 }
 
 fun AppCompatActivity.navigationModule(
+    isRestartActivity: Boolean = false,
     baseModule: String = "com.irfanirawansukirman",
     targetClass: String,
     withFinish: Boolean = false
 ) {
-    navigationModule(baseModule = baseModule, targetClass = targetClass, withFinish = withFinish) {}
+    navigationModule(
+        isRestartActivity = isRestartActivity,
+        baseModule = baseModule,
+        targetClass = targetClass,
+        withFinish = withFinish
+    ) {}
 }
 
 // source: https://proandroiddev.com/easy-navigation-in-a-multi-module-android-project-2374ecbaa0ae
 fun AppCompatActivity.navigationModule(
+    isRestartActivity: Boolean = false,
     baseModule: String = "com.irfanirawansukirman",
     targetClass: String,
     withFinish: Boolean = false,
@@ -84,7 +91,11 @@ fun AppCompatActivity.navigationModule(
     intent.intentParams()
     intent.setClassName(this, baseModule + separator + targetClass)
     if (requestCode != 0) startActivityForResult(intent, requestCode) else startActivity(intent)
-    if (withFinish) finish()
+    if (isRestartActivity) {
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
+    if (withFinish || isRestartActivity) finish()
     overridePendingTransitionEnter()
 }
 

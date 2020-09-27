@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootContainer"
+    style="@style/RootDefault"
+    android:orientation="vertical"
+    tools:context=".presentation.dashboard.DashboardActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="@dimen/body_4dp"
+        android:paddingLeft="@dimen/body_24dp"
+        android:paddingTop="@dimen/body_24dp"
+        android:paddingRight="@dimen/body_24dp"
+        android:paddingBottom="@dimen/body_8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constDashboardTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtDashboardWelcome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/body_16dp"
+                android:fontFamily="@font/notosanskr_bold"
+                android:includeFontPadding="false"
+                android:text="Good morning, Irfan Irawan Sukirman"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_22sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/imgDashboardLogout"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgDashboardLogout"
+                android:layout_width="@dimen/body_32dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_logout"
+                app:layout_constraintBottom_toTopOf="@id/linDashboard"
+                app:layout_constraintLeft_toRightOf="@id/txtDashboardWelcome"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/red" />
+
+            <LinearLayout
+                android:id="@+id/linDashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtDashboardWelcome">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:text="Dummy Test PODS"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16sp"
+                    app:fontFamily="@font/notosanskr_bold" />
+
+                <LinearLayout
+                    android:id="@+id/linDashboardPodsFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/body_24dp"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_down_24dp"
+                        app:tint="@color/blue" />
+
+                    <ImageView
+                        android:layout_width="@dimen/body_32dp"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_hotel"
+                        app:tint="@color/blue" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtDashboardWarning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/body_4dp"
+                android:includeFontPadding="false"
+                android:text="You have some tasks to do for today"
+                android:textSize="@dimen/text_12sp"
+                app:fontFamily="@font/notosanskr_bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linDashboard" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/body_16dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtDashboardWarning">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtDashboardStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/body_4dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:drawablePadding="0dp"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="-8dp"
+                    android:text="All Status"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/text_14sp"
+                    app:drawableLeftCompat="@drawable/ic_down_24dp"
+                    app:drawableTint="@color/blue"
+                    app:fontFamily="@font/notosanskr_bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1px"
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/imgDashboardList"
+                    android:layout_width="@dimen/body_32dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/body_12dp"
+                    android:adjustViewBounds="true"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="@dimen/body_6dp"
+                    android:src="@drawable/ic_list"
+                    app:tint="@color/blue" />
+
+                <ImageView
+                    android:id="@+id/imgDashboardGrid"
+                    android:layout_width="@dimen/body_32dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="@dimen/body_6dp"
+                    android:src="@drawable/ic_menu"
+                    app:tint="@color/grayBackground" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerDashboardPods"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:background="@color/white"
+        android:scrollbars="none" />
+</LinearLayout>

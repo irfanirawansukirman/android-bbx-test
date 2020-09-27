@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zerobranch.layout.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:draggedItem="@id/linPodsListContainer"
+    app:leftItem="@id/frameDashboardCancelContainer"
+    app:rightItem="@id/frameDashboardSubmitContainer"
+    app:swipeDirection="left|right">
+
+    <FrameLayout
+        android:id="@+id/frameDashboardCancelContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:background="@color/pink"
+        android:padding="@dimen/body_16dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtPodsListCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_round_pink_dark"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingLeft="@dimen/body_12dp"
+            android:paddingTop="@dimen/body_4dp"
+            android:paddingRight="@dimen/body_12dp"
+            android:paddingBottom="@dimen/body_4dp"
+            android:text="ABC"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_12sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameDashboardSubmitContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background="@color/orange"
+        android:padding="@dimen/body_16dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtPodsListSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_round_orange_dark"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingLeft="@dimen/body_12dp"
+            android:paddingTop="@dimen/body_4dp"
+            android:paddingRight="@dimen/body_12dp"
+            android:paddingBottom="@dimen/body_4dp"
+            android:text="ABC"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_12sp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/linPodsListContainer"
+        style="@style/RootDefault"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground"
+        android:orientation="horizontal"
+        android:padding="@dimen/body_16dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtPodsListName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:includeFontPadding="false"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14sp"
+            app:fontFamily="@font/notosanskr_bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtPodsListCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_round_indicator_red"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:minWidth="@dimen/body_48dp"
+            android:paddingLeft="@dimen/body_12dp"
+            android:paddingTop="@dimen/body_4dp"
+            android:paddingRight="@dimen/body_12dp"
+            android:paddingBottom="@dimen/body_4dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_12sp"
+            tools:text="ABC" />
+
+    </LinearLayout>
+</com.zerobranch.layout.SwipeLayout>

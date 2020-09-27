@@ -30,10 +30,6 @@ class MovieVM @ViewModelInject constructor(
     val movies: LiveData<UIState<List<Result>>>
         get() = _movies
 
-    private val _test = MutableLiveData<String>()
-    val test: LiveData<String>
-        get() = _test
-
     override fun getMovies() {
         executeJob {
             movieRepositoryImpl().collect {

@@ -75,6 +75,8 @@ dependencies {
 
     api utils.dexterPermission
 
+    api project(':library:libraryres')
+
     testApi 'junit:junit:4.12'
     androidTestApi 'androidx.test.ext:junit:1.1.1'
     androidTestApi 'androidx.test.espresso:espresso-core:3.2.0'

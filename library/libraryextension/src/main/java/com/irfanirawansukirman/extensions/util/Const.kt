@@ -16,7 +16,8 @@ object Const {
     }
 
     object Navigation {
-        const val MainActivity = "ustman.presentation.main.main.MainActivity"
+        const val LoginActivity = "featureauth.login.LoginActivity"
+        const val DashboardActivity = "featuredashboard.presentation.dashboard.DashboardActivity"
 
         const val LOCATION_SETTINGS = Settings.ACTION_LOCATION_SOURCE_SETTINGS
     }
@@ -43,5 +44,9 @@ object Const {
         const val READ_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE
         const val FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION
         const val COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION
+    }
+
+    object Time {
+        const val DELAY_TIME_DEFAULT = 3_000L
     }
 }

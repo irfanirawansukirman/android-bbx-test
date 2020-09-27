@@ -25,6 +25,7 @@ dependencies {
     api project(':library:librarycomponent')
     api project(':library:libraryutil')
     api project(':library:librarynetwork')
+    api project(':library:libraryres')
 
     api group: 'net.time4j', name: 'time4j-android', version: '4.6-2020a'
 

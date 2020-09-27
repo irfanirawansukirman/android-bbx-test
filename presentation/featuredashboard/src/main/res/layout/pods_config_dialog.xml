@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/RootDefault"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/body_24dp"
+    android:background="@drawable/bg_round_white"
+    android:clipToPadding="false"
+    android:paddingLeft="@dimen/body_24dp"
+    android:paddingTop="@dimen/body_24dp"
+    android:paddingRight="@dimen/body_24dp"
+    android:paddingBottom="22dp">
+
+    <TextView
+        android:id="@+id/txtPodsConfigName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/body_4dp"
+        android:fontFamily="@font/notosanskr_bold"
+        android:includeFontPadding="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/app_name" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerPodsConfig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/body_24dp"
+        android:nestedScrollingEnabled="false"
+        android:overScrollMode="never"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtPodsConfigName" />
+
+    <EditText
+        android:id="@+id/edtxtPodsConfigDesc"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/body_144dp"
+        android:layout_marginLeft="@dimen/body_4dp"
+        android:layout_marginTop="@dimen/body_16dp"
+        android:layout_marginRight="@dimen/body_4dp"
+        android:background="@drawable/bg_round_stroke_4dp_gray"
+        android:fontFamily="@font/notosanskr_bold"
+        android:gravity="top"
+        android:includeFontPadding="false"
+        android:inputType="textMultiLine"
+        android:maxLength="255"
+        android:padding="@dimen/body_8dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerPodsConfig" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPodsConfigCancel"
+        style="@style/ButtonDefault.Disable"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="@dimen/body_22dp"
+        android:layout_marginRight="@dimen/body_16dp"
+        android:paddingLeft="@dimen/body_16dp"
+        android:paddingRight="@dimen/body_16dp"
+        android:text="Cancel"
+        android:textColor="@color/grayIndicator"
+        android:textSize="@dimen/text_12sp"
+        app:backgroundTint="@color/grayBackground"
+        app:layout_constraintRight_toLeftOf="@id/btnPodsConfigSubmit"
+        app:layout_constraintTop_toBottomOf="@id/edtxtPodsConfigDesc" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPodsConfigSubmit"
+        style="@style/ButtonDefault"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="@dimen/body_22dp"
+        android:layout_marginRight="@dimen/body_6dp"
+        android:paddingLeft="@dimen/body_16dp"
+        android:paddingRight="@dimen/body_16dp"
+        android:text="Continue"
+        android:textSize="@dimen/text_12sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtxtPodsConfigDesc" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

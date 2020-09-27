@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.irfanirawansukirman.librarycomponent.DisallowInterceptView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootDefault"
+    android:background="@android:color/transparent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            style="@style/RootDefault"
+            android:background="@android:color/transparent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="@dimen/body_48dp"
+                android:layout_height="@dimen/body_6dp"
+                android:background="@drawable/toggle_sheet_indicator_round_gray" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerPodsFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/body_8dp"
+                android:background="@drawable/bg_top_round_white"
+                android:nestedScrollingEnabled="false" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</com.irfanirawansukirman.librarycomponent.DisallowInterceptView>
+
